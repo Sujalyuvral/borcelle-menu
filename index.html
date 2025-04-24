@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Borcelle Coffee Shop Menu</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f8f3ed;
+      color: #3e2c23;
+      text-align: center;
+      padding: 20px;
+    }
+    h1 {
+      font-size: 3em;
+      margin-bottom: 10px;
+    }
+    .category {
+      margin: 20px 0;
+    }
+    button {
+      background-color: #a9745e;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      margin: 5px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1em;
+    }
+    button:hover {
+      background-color: #875b49;
+    }
+    .items {
+      margin-top: 15px;
+    }
+    .items p {
+      margin: 5px 0;
+      cursor: pointer;
+    }
+    .items p:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>☕ Borcelle Coffee Shop Menu ☕</h1>
+
+  <div id="categories">
+    <div class="category">
+      <button onclick="showItems('Coffee')">Coffee</button>
+      <button onclick="showItems('Tea')">Tea</button>
+      <button onclick="showItems('Non-Coffee')">Non-Coffee</button>
+      <button onclick="showItems('Desserts')">Desserts</button>
+    </div>
+  </div>
+
+  <div class="items" id="items"></div>
+
+  <script>
+    const menu = {
+      "Coffee": {
+        "Espresso": 5,
+        "Double Espresso": 5,
+        "Latte": 5,
+        "Americano": 5,
+        "Macchiato": 5,
+        "Flat White": 5,
+        "Cappuccino": 5
+      },
+      "Tea": {
+        "Lemon Tea": 5,
+        "Mango Tea": 5,
+        "Jasmine": 5,
+        "Green Tea": 5,
+        "Mint Tea": 5
+      },
+      "Non-Coffee": {
+        "Hot Chocolate": 5,
+        "Milkshake": 5,
+        "Smoothie": 5,
+        "Lemonade": 5,
+        "Vanilla Milkshake": 5
+      },
+      "Desserts": {
+        "Strawberry Waffle": 5,
+        "Cinnamon Roll": 5,
+        "Lemon Pie": 5,
+        "Croissant": 5,
+        "Chocolate Waffle": 5,
+        "Brownies": 5,
+        "Cheesecake": 5,
+        "Chocolate Muffin": 5
+      }
+    };
+
+    function showItems(category) {
+      const itemsDiv = document.getElementById('items');
+      itemsDiv.innerHTML = `<h2>${category}</h2>`;
+      for (let item in menu[category]) {
+        itemsDiv.innerHTML += `<p onclick="orderItem('${item}', ${menu[category][item]})">${item} - $${menu[category][item]}</p>`;
+      }
+    }
+
+    function orderItem(item, price) {
+      alert(`You ordered ${item}. That will be $${price}. Enjoy! ☕`);
+    }
+  </script>
+
+</body>
+</html>
